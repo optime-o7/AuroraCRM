@@ -1,0 +1,729 @@
+/* --------------------------- */
+/* VARIABLES GLOBALES          */
+/* --------------------------- */
+
+:root {
+    /* --- COLORES BASE (Modo Claro) --- */
+    --color-primary: #3A6DFF;
+    --color-primary-dark: #2f56cc;
+    --color-bg-light: #E9F2FF;
+    --color-text: #1F1F1F;
+    --color-white: #ffffff;
+    --color-dark-overlay: rgba(0, 0, 0, 0.4);
+    --color-header-bg: #f0f8ff; 
+    
+    /* Variables de Tema Dinámico (Modo Claro) */
+    --color-background: var(--color-white); /* Fondo principal (blanco) */
+    --color-surface: var(--color-bg-light); /* Fondo de secciones/tarjetas (gris/azul claro) */
+    --color-on-background: var(--color-text);
+    --color-on-surface: var(--color-text);
+    --color-border: #D1D5DB;
+
+    --radius: 12px;
+
+    --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.10);
+
+    --font-main: "Inter", "Poppins", sans-serif;
+
+    --space-section: 50px;
+    --space-container: 16px;
+    --duration: 10s;
+    --totalitems: 3;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    /* Fondo principal más claro */
+    --color-background: #101010; /* Fondo principal (gris medio) */
+    /* Surface se mantiene como gris muy oscuro, pero lo usaremos más para el hover */
+    --color-surface: #121212; 
+    
+    --color-on-background: #E0E0E0;
+    --color-on-surface: #F5F5F5;
+    --color-border: #374151;
+
+    --color-text: var(--color-on-background);
+    --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --color-primary-dark-glow: #7a9cff;
+}
+
+/* --------------------------- */
+/* RESET + BASE                */
+/* --------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-on-background);
+    background: var(--color-background); /* Usa el fondo principal */
+    line-height: 1.6;
+    padding: 0 var(--space-container);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* TÍTULOS (Estilo Sólido del Usuario) */
+h2, h3{
+    color:rgba(90,140,255,1);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: var(--radius);
+}
+
+
+/* SECCIÓN: Ajustes de Margen y Ancho */
+section {
+    padding: var(--space-section) var(--space-container);
+    max-width: 900px; 
+    margin: 20px auto; 
+
+    /* 🔥 fondo fachero (Modo Claro Transparente) */
+    backdrop-filter: blur(6px);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.65),
+        rgba(255,255,255,0.4)
+    );
+    border-radius: 20px;
+    border: 1px solid rgb(133, 133, 133); 
+}
+
+/* 🌙 Modo Oscuro: APLICAMOS LIQUID GLASS A LA SECCIÓN */
+body.dark-mode section {
+    background: rgba(0, 0, 0, 0.4); /* Base oscura semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.12); /* Borde de luz sutil */
+    backdrop-filter: blur(15px); /* Alto blur para el efecto "crystal" */
+}
+
+/* SCROLL SUAVE */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --------------------------- */
+/* NAVBAR                      */
+/* --------------------------- */
+
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+
+/* 🌙 Modo Oscuro: Navbar con transparencia oscura y blur (Glass) */
+body.dark-mode .top-nav {
+    background: rgba(0,0,0,0.6); 
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.top-nav .logo {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: var(--color-on-background);
+    font-weight: 600;
+    opacity: .85;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* --------------------------- */
+/* ANIMACIÓN SCROLL            */
+/* --------------------------- */
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------- */
+/* TITULOS GLOW                */
+/* --------------------------- */
+
+/* Se respeta el color sólido del usuario */
+
+/* --------------------------- */
+/* HEADER                      */
+/* --------------------------- */
+.header-split {
+    /* Usamos la sección padding para centralizar y limitar el ancho */
+    padding: var(--space-section) var(--space-container); 
+    max-width: 900px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column; /* Apilado en móvil */
+    gap: 30px; /* Espacio entre el texto y la imagen */
+    align-items: center;
+    text-align: center;
+    /* Un poco de padding extra arriba para que respire */
+    padding-top: 60px; 
+}
+
+.header-split__content {
+    /* En móvil, toma el ancho completo y el texto está centrado */
+    width: 100%;
+}
+
+.header-split__title {
+    font-size: 1.8rem; 
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.header-split__subtitle {
+    font-size: 1rem; 
+    margin-bottom: 30px;
+    color: var(--color-text); /* Color normal en modo claro */
+}
+
+.header-split__cta {
+    display: inline-block;
+    padding: 12px 24px; 
+    background: var(--color-primary); 
+    color: var(--color-white);
+    border-radius: var(--radius);
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transition: background .2s, transform .2s;
+}
+
+.header-split__cta:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.header-split__image-wrapper {
+    width: 100%; /* Ocupa el 100% del ancho en móvil */
+    max-width: 500px; /* Limita el tamaño en móvil */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+}
+
+.header-split__image {
+    width: 100%;
+    height: auto;
+    /* Si queremos un efecto de zoom suave */
+    transition: transform 0.4s ease-out; 
+}
+
+/* --------------------------- */
+/* BENEFICIOS + TARJETAS       */
+/* --------------------------- */
+.benefits{
+    text-align: center;
+}
+
+.benefits__list {
+    display: grid;
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.benefits__item,
+.testimonial {
+    backdrop-filter: blur(10px);
+    padding: 22px;
+    transition: 0.25s;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.205);
+    margin: 10px;
+}
+
+.benefits__item-title i {
+    margin-right: 8px;
+    font-size: 1.3rem;
+    color: var(--color-primary-dark);
+}
+
+.benefits__item:hover,
+.testimonial:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.5);
+}
+
+body.dark-mode .benefits__item,
+body.dark-mode .testimonial,
+body.dark-mode .steps__list > li{
+    background-color: rgba(34, 34, 34, 0.7);
+    border: 0;
+}
+/* Hover en modo oscuro: Usamos un color ligeramente más oscuro */
+body.dark-mode .benefits__item:hover,
+body.dark-mode .testimonial:hover {
+    background: rgba(44, 44, 44, 0.7); 
+}
+
+/* --------------------------- */
+/* SHOWCASE                    */
+/* --------------------------- */
+
+.showcase {
+    text-align: center;
+}
+
+.showcase__cards {
+    margin-top: 30px;
+    display: grid;
+    gap: 20px;
+}
+
+.showcase__card {
+    padding: 25px;
+    background: rgba(255,255,255,0.35);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    box-shadow: var(--shadow-medium);
+}
+
+body.dark-mode .showcase__card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); 
+}
+
+
+/* --------------------------- */
+/* ESTILOS DE TABLA (Basados en la imagen) */
+/* --------------------------- */
+.dashboard{
+    max-width: 100%;
+}
+
+.dashboard__tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; 
+    text-align: center;
+}
+
+.dashboard__title {
+    text-align: center;
+}
+
+.table-block {
+    /* Base del contenedor de la tabla */
+    background: #ffffff; 
+    border: 2px solid rgba(0, 0, 0, 0.205); 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    max-width: 350px;
+    border-collapse: separate; 
+    border-spacing: 0; 
+    overflow: hidden; 
+    transition: 0.3s;
+    
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll; 
+}
+
+/* 🌙 Modo Oscuro: Fondo del contenedor de la tabla (Liquid Glass) */
+body.dark-mode .table-block {
+    background: rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+    backdrop-filter: blur(5px); 
+}
+
+.table-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* 🌙 Modo Oscuro: Hover */
+body.dark-mode .table-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+
+.table-block table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard__table-title {
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    align-self: center;
+    margin: 0;
+}
+
+/* ENCABEZADOS */
+
+.table-block thead tr {
+    position: relative;
+    overflow: hidden;
+}
+
+.table-block th {
+    /* Estilo para la fila de encabezados visibles */
+    background: #f0f4f8; 
+    padding: 16px 18px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444; 
+    border-bottom: 1px solid #e0e0e0;
+    text-transform: uppercase;
+}
+
+/* 🌙 Modo Oscuro: Encabezados */
+body.dark-mode .table-block th {
+    background: #333333; 
+    color: var(--color-on-surface); 
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* CELDAS */
+
+.table-block td {
+    background: #ffffff; 
+    color: #444; 
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e0e0e0; 
+    text-align: center;
+}
+
+/* 🌙 Modo Oscuro: Celdas (Color sólido oscuro para legibilidad dentro del bloque Glass) */
+body.dark-mode .table-block td {
+    background: #151515; /* Gris oscuro sólido */
+    color: var(--color-on-surface); 
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* Alineación de la primera columna (descripciones) */
+.table-block td:first-child {
+    font-weight: 600;
+    color: #2c3e50; 
+    text-align: left; 
+}
+
+/* 🌙 Modo Oscuro: Alineación de la primera columna */
+body.dark-mode .table-block td:first-child {
+    color: var(--color-on-surface);
+}
+
+
+/* ===== IMITANDO COLORES DE LA PRIMERA COLUMNA DE LA IMAGEN (Opción 1) ===== */
+/* Para la primera tabla */
+.table-block:nth-child(1) tbody tr:nth-child(1) td:first-child { background-color: #f7e9ff; color: #5b5f88; }
+.table-block:nth-child(1) tbody tr:nth-child(2) td:first-child { background-color: #e5f1f4; color: #5fa8ff; }
+.table-block:nth-child(1) tbody tr:nth-child(3) td:first-child { background-color: #dbe4ef; color: #72a0ff; }
+
+/* 🌙 Modo Oscuro: Imitando colores de la primera columna de la imagen */
+/* Usamos tonos oscuros que resalten sobre el fondo de celda (#151515) */
+body.dark-mode .table-block:nth-child(1) tbody tr:nth-child(1) td:first-child { background-color: #2a2a35; color: #a4a7cf; }
+body.dark-mode .table-block:nth-child(1) tbody tr:nth-child(2) td:first-child { background-color: #2a3535; color: #a7d0d8; }
+body.dark-mode .table-block:nth-child(1) tbody tr:nth-child(3) td:first-child { background-color: #2a303a; color: #b0c2e3; }
+
+/* Para la segunda tabla (sin colores en la primera columna) */
+.table-block:nth-child(2) td:first-child { background-color: #ffffff; }
+body.dark-mode .table-block:nth-child(2) td:first-child { background-color: #151515; } /* Usamos el gris oscuro de las celdas */
+
+
+/* QUITAMOS el hover suave del estilo anterior ya que rompía con el diseño de la imagen */
+.table-block tbody tr:hover td {
+    background: none;
+}
+body.dark-mode .table-block tbody tr:hover td {
+    background: none;
+}
+
+/* Arreglo de redondeo de la tabla */
+.table-block tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+.table-block tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* --------------------------- */
+/* PASOS (CÓMO FUNCIONA)       */
+/* --------------------------- */
+
+.steps__title {
+    text-align: center;
+}
+
+.steps__list--item{
+    width: 150px;
+}
+
+.steps__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+/* Ajustamos las tarjetas de pasos con el estilo Liquid Crystal */
+.steps__list > li{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+    padding: 50px;
+    border-radius: 8px;
+    /* Aplicamos el estilo de tarjeta Liquid Crystal */
+    border: 2px solid rgba(0, 0, 0, 0.205);
+    backdrop-filter: blur(5px);
+    color: var(--color-on-surface); 
+}
+
+/* --------------------------- */
+/* TESTIMONIOS (Se mantiene bien) */
+/* --------------------------- */
+
+.testimonials {
+    display: block;
+    text-align: center;
+}
+
+.testimonial__container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+}
+
+/* --------------------------- */
+/* CTA                        */
+/* --------------------------- */
+
+.cta-final {
+    text-align: center;
+}
+
+.cta-final a {
+    padding: 15px 20px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: .2s;
+}
+
+.cta-final a:hover {
+    background: var(--color-primary-dark);
+}
+
+/* --------------------------- */
+/* FOOTER                      */
+/* --------------------------- */
+
+.footer {
+    background: var(--color-primary-dark);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* --------------------------- */
+/* BOTÓN DE TEMA               */
+/* --------------------------- */
+
+/* Ajustado para usar variable de superficie (será sólido para destacar) */
+.theme-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--color-surface); 
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-medium);
+    transition: .25s;
+}
+
+.theme-toggle-button:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.05);
+}
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+
+@media (min-width: 768px) {
+    .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    z-index: 200;
+}
+
+    body { padding: 0; }
+
+    .header-split {
+        flex-direction: row; /* Uno al lado del otro */
+        text-align: left; /* Alineación de texto a la izquierda */
+        /* Un poco más de aire en desktop */
+        padding-top: 80px; 
+    }
+    
+    .header-split__content {
+        width: 50%; /* 50% para el texto */
+        padding-right: 40px; /* Espacio entre texto e imagen */
+        
+        /* Aseguramos que el texto esté alineado arriba en la columna */
+        align-self: flex-start; 
+    }
+    
+    .header-split__title {
+        font-size: 2.2rem;
+    }
+
+    .header-split__subtitle {
+        font-size: 1.15rem;
+    }
+
+    .header-split__image-wrapper {
+        width: 50%; /* 50% para la imagen */
+        max-width: none; /* Quitamos el límite para que use el 50% */
+    }
+
+    .benefits__list {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .table-block{
+        overflow: hidden;
+        max-width: 1100px;
+    }
+
+    .testimonials {
+        max-width: 900px;
+        
+    }
+
+
+    .testimonial__container{
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .testimonials[data-animated="true"]{
+        overflow: hidden;
+    }
+
+    .testimonials[data-animated="true"] .testimonial__container{
+        width: max-content;
+        animation: scrollX 20s linear infinite;
+    }
+
+    .testimonial{
+        width: 400px;
+    }
+
+    .testimonial.hide-on-mobile {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    section {
+        max-width: 1100px; 
+    }
+
+    .header-split__title {
+        font-size: 2.8rem; 
+    }
+    
+    .header-split__content {
+        padding-right: 60px; /* Más espacio en resoluciones grandes */
+    }
+
+    .top-nav {
+        flex-direction: row;
+        justify-content: baseline;
+        align-items: center;
+        text-align: center;
+    }
+
+    .steps__list{
+        display: grid;
+        grid-template-columns: 150px 600px;
+        column-gap: 25px;
+    }
+
+
+}
+
+@keyframes scrollX{
+    to{
+        transform: translate(calc(-50% - .5rem));
+    }
+}

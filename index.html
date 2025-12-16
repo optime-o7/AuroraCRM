@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuroraCRM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <h3 class="logo">AuroraCRM</h3>
+        <ul class="nav-links">
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#funciona">Cómo funciona</a></li>
+            <li><a href="#panel">Panel</a></li>
+            <li><a href="#testimonials">Testimonios</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-split">
+        <div class="header-split__content">
+            <h1 class="header-split__title">Organizá tus clientes y vende más, sin complicarte</h1>
+            <p class="header-split__subtitle">AuroraCRM te da claridad en tus ventas con una interfaz simple y rápida.</p>
+
+            <a href="#" class="header-split__cta">Probar Beta</a>
+        </div>
+        
+        <figure class="header-split__image-wrapper">
+            <img class="header-split__image" src="fondo.jpg" alt="Panel de control de AuroraCRM">
+        </figure>
+    </header>
+
+
+    <main>
+
+        <section class="benefits fade-in-section" id="beneficios">
+            <h2 class="benefits__title">Beneficios Clave</h2>
+
+            <div class="benefits__list">
+
+                <article class="benefits__item">
+                    <i class="ph-fill ph-map-pin-line benefits__item-icon"></i>
+                    <h4 class="benefits__item-title">Todo en un solo lugar</h4>
+                    <p class="benefits__item-description">Contactos, ventas, tareas, y seguimiento de clientes en una única plataforma centralizada. ¡Decile adiós al Excel!</p>
+                </article>
+
+                <article class="benefits__item">
+                    <i class="ph-fill ph-lightning benefits__item-icon"></i>
+                    <h4 class="benefits__item-title">Rápido y liviano</h4>
+                    <p class="benefits__item-description">Diseñado para la velocidad. Funciona sin problemas en cualquier dispositivo sin necesidad de configuraciones externas o complejas.</p>
+                </article>
+
+                <article class="benefits__item">
+                    <i class="ph-fill ph-lock-key benefits__item-icon"></i>
+                    <h4 class="benefits__item-title">Seguro y confiable</h4>
+                    <p class="benefits__item-description">Tus datos están protegidos con encriptación avanzada y backups automáticos diarios. Enfócate en vender, nosotros cuidamos el resto.</p>
+                </article>
+            </div>
+        </section>
+
+
+        <section class="steps fade-in-section" id="funciona">
+            <h2 class="steps__title">Pasos para empezar en 5 minutos</h2>
+            <div>
+
+                <ul class="steps__list">
+                    <li class="steps__list--item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                    </li>
+                    <li><b>Crea tu cuenta</b> Regístrate en segundos, sin tarjeta de crédito.</li>
+                    <li class="steps__list--item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                        </svg>
+                    </li>
+                    <li><b>Carga tus clientes</b> Importa tus contactos o cárgalos manualmente.</li>
+                    <li class="steps__list--item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                        </svg>
+                    </li>
+                    <li><b>Define tus etapas</b> Personaliza el embudo de ventas para que coincida con tu proceso.</li>
+                    <li class="steps__list--item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                        </svg>
+                    </li>
+                    <li><b>Empieza a vender</b> Visualiza dónde está cada cliente y mueve las oportunidades.</li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <section class="dashboard fade-in-section" id="panel">
+            <h2 class="dashboard__title">Tu Panel de Control, simple y claro</h2>
+            
+            <div class="dashboard__tables-container">
+                
+                <div class="table-block">
+                    <h3 class="dashboard__table-title">Actividades de la Semana</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Día</th>
+                                <th>Tarea</th>
+                                <th>Asignado a</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lunes</td>
+                                <td>09:00 – Llamada a Diseños Web</td>
+                                <td>Usted</td>
+                            </tr>
+
+                            <tr>
+                                <td>Martes</td>
+                                <td>15:30 – Carga de nuevos leads</td>
+                                <td>Ambos</td>
+                            </tr>
+
+                            <tr>
+                                <td>Miércoles</td>
+                                <td>17:00 – Presentación a Tienda M.</td>
+                                <td>Usted</td>
+                            </tr>
+
+                            <tr>
+                                <td>Jueves</td>
+                                <td>10:00 – Reporte semanal</td>
+                                <td>Ambos</td>
+                            </tr>
+
+                            <tr>
+                                <td>Viernes</td>
+                                <td>14:00 – Entrega de cajas</td>
+                                <td>Usted</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-block">
+                    <h3 class="dashboard__table-title">Oportunidades Abiertas</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Etapa</th>
+                                <th>Valor Est.</th>
+                                <th>Próx. Tarea</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Diseño Web S.A.</td>
+                                <td>Propuesta enviada</td>
+                                <td>$3.500 USD</td>
+                                <td>Llamada de seguimiento (Hoy)</td>
+                            </tr>
+                            <tr>
+                                <td>Logística Express</td>
+                                <td>Primer contacto</td>
+                                <td>$1.200 USD</td>
+                                <td>Enviar brochure (Mañana)</td>
+                            </tr>
+                            <tr>
+                                <td>Tienda de Ropa M.</td>
+                                <td>Negociación</td>
+                                <td>$800 USD</td>
+                                <td>Reunión final (Miércoles)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="testimonials fade-in-section" id="testimonials">
+            <h2 class="testimonials__title">La opinión de nuestros usuarios</h2>
+
+            <div class="testimonial__container" id="scroller">
+                <article class="testimonial" style="--i:1">
+                    <i class="ph-fill ph-chat-circle-dots testimonial__icon"></i>
+                    <p class="testimonial__text">“AuroraCRM nos ordenó todo. Pasamos de Excel a algo serio, viendo exactamente dónde están nuestras oportunidades. ¡El mejor cambio que hicimos!”</p>
+                    <h4 class="testimonial__name">Martín, Dueño de agencia.</h4>
+                </article>
+
+                <article class="testimonial" style="--i:2">
+                    <i class="ph-fill ph-chat-circle-dots testimonial__icon"></i>
+                    <p class="testimonial__text">“Es simple y no tiene miles de botones inútiles. La curva de aprendizaje fue de 5 minutos, y ahora mi equipo junior lo usa sin problemas.”</p>
+                    <h4 class="testimonial__name">Laura, Emprendedora.</h4>
+                </article>
+            
+                <article class="testimonial hide-on-mobile" style="--i:3">
+                    <i class="ph-fill ph-chat-circle-dots testimonial__icon"></i>
+                    <p class="testimonial__text">“Poder ver mis ventas en un panel claro me dio la tranquilidad para enfocarme en lo que realmente importa: llamar a los clientes y cerrar ventas.”</p>
+                    <h4 class="testimonial__name">Ramiro, Asesor de ventas.</h4>
+                </article>
+            </div>
+
+
+        </section>
+
+
+        <section class="cta-final fade-in-section">
+            <h2 class="cta-final__title">¿Listo para organizar tus ventas?</h2>
+            <a href="#" class="cta-final__button">Ver demo gratis</a>
+        </section>
+
+        <div>
+            <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar modo oscuro y claro">
+                <i class="ph-fill ph-moon"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 AuroraCRM. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>
